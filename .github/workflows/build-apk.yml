@@ -68,7 +68,15 @@ jobs:
 
       - name: Rename APK for Distribution
         run: |
-          cp android/app/build/outputs/apk/debug/app-debug.apk ./RD-Manager-v1.0.20.apk
+          find android -name "*.apk"
+          APK_PATH=$(find android -name "*.apk" | head -n 1)
+          if [ -z "$APK_PATH" ]; then
+            echo "Error: No APK file found in android directory!"
+            exit 1
+          fi
+          echo "Found APK at: $APK_PATH"
+          cp "$APK_PATH" ./RD-Manager-v1.0.20.apk
+          ls -lh ./RD-Manager-v1.0.20.apk
 
       - name: Upload APK as Artifact
         uses: actions/upload-artifact@v4
