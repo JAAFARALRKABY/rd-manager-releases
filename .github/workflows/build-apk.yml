@@ -49,10 +49,22 @@ jobs:
           cp capacitor.config.json android/app/src/main/assets/capacitor.config.json
           [ -f android/app/src/main/assets/capacitor.plugins.json ] || echo "[]" > android/app/src/main/assets/capacitor.plugins.json
 
+      - name: Accept Android Licenses & Setup SDK
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-35" "platforms;android-36" || true
+
       - name: Build APK (Assemble Debug)
         run: |
           cd android
-          ./gradlew assembleDebug --no-daemon --stacktrace
+          ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee ../gradle-build.log
+
+      - name: Upload Build Log on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gradle-build-log
+          path: ./gradle-build.log
 
       - name: Rename APK for Distribution
         run: |
