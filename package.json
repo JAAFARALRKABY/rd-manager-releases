@@ -1,0 +1,85 @@
+{
+    "name": "rd-financial-system",
+    "private": true,
+    "version": "1.0.20",
+    "author": "Jaafar AL-sadiq",
+    "description": "Premium Financial Management System for RD",
+    "main": "electron/main.cjs",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "desktop": "electron electron/main.cjs",
+        "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+        "dist": "vite build && electron-builder --win nsis",
+        "cap:sync": "vite build && npx cap sync android",
+        "server": "node server/index.js"
+    },
+    "build": {
+        "appId": "com.rd.app",
+        "productName": "RD Manager",
+        "artifactName": "RD-Manager-Setup-${version}.${ext}",
+        "directories": {
+            "output": "release"
+        },
+        "win": {
+            "target": "nsis",
+            "icon": "public/logo.png",
+            "requestedExecutionLevel": "requireAdministrator"
+        },
+        "nsis": {
+            "oneClick": true,
+            "perMachine": true,
+            "allowElevation": true,
+            "allowToChangeInstallationDirectory": false,
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true,
+            "shortcutName": "RD Manager"
+        },
+        "files": [
+            "dist/**/*",
+            "electron/**/*"
+        ],
+        "publish": [
+            {
+                "provider": "github",
+                "owner": "JAAFARALRKABY",
+                "repo": "rd-manager-releases"
+            }
+        ]
+    },
+    "dependencies": {
+        "@capacitor/android": "^8.5.3",
+        "@capacitor/cli": "^8.5.3",
+        "@capacitor/core": "^8.5.3",
+        "bcryptjs": "^3.0.3",
+        "docx": "^9.7.1",
+        "electron-updater": "^6.8.9",
+        "file-saver": "^2.0.5",
+        "framer-motion": "^12.42.2",
+        "html-to-image": "^1.11.13",
+        "jspdf": "^4.2.1",
+        "lucide-react": "^0.294.0",
+        "mssql": "^12.7.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-hot-toast": "^2.6.0",
+        "recharts": "^2.15.4",
+        "semver": "^7.8.5"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.43",
+        "@types/react-dom": "^18.2.17",
+        "@vitejs/plugin-react": "^4.2.1",
+        "autoprefixer": "^10.4.16",
+        "electron": "^41.2.0",
+        "electron-builder": "^25.1.8",
+        "eslint": "^9.39.5",
+        "eslint-plugin-react": "^7.37.5",
+        "eslint-plugin-react-hooks": "^7.1.1",
+        "postcss": "^8.4.32",
+        "tailwindcss": "^3.4.0",
+        "vite": "^5.0.8"
+    }
+}

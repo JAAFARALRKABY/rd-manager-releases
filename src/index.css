@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════
+   RD MANAGER — ULTRA PREMIUM DESIGN SYSTEM v3.0 (Enhanced UI/UX Pro Max)
+   Zero Blur | GPU Optimized | Maximum Aesthetics
+   ═══════════════════════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    --bg-deepest: #020617; /* Slate 950 - Premium Deep Dark */
+    --bg-deep: #0f172a; /* Slate 900 */
+    --bg-dark: #1e293b; /* Slate 800 */
+    --bg-card: rgba(15, 23, 42, 0.7);
+    --bg-card-hover: rgba(30, 41, 59, 0.8);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.15);
+    --accent-1: #2563eb; /* Blue 600 */
+    --accent-2: #3b82f6; /* Blue 500 */
+    --accent-3: #22c55e; /* Emerald 500 - Positive Financial */
+    --text-muted: #94a3b8; /* Slate 400 */
+    --glow-primary: rgba(37, 99, 235, 0.35);
+    --glow-gold: rgba(34, 197, 94, 0.35);
+  }
+
+  body {
+    font-family: "Tajawal", "Segoe UI", Tahoma, sans-serif;
+    background-color: var(--bg-deepest);
+    color: #f4f4f5;
+    min-height: 100vh;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  /* ─── CARD PANEL (Modern SaaS, Rounded, Soft Shadow) ─── */
+  .glass-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.02),
+      0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    /* Removed backdrop-filter to fix massive GPU lag on lists */
+    transition:
+      transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-panel:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 20px 40px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  /* ─── PREMIUM INPUTS (Modern Pill-like) ─── */
+  .premium-input {
+    width: 100%;
+    padding: 12px 18px;
+    background: rgba(2, 6, 23, 0.5) !important;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: #f8fafc;
+    font-family: "Tajawal", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition:
+      border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .premium-input:focus {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: var(--accent-1);
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.2),
+      0 0 0 3px rgba(37, 99, 235, 0.25);
+  }
+
+  .premium-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  /* ─── GLOW BUTTONS (Modern Soft Gradient) ─── */
+  .glow-button {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 4px 15px rgba(37, 99, 235, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition:
+      transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glow-button:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 25px rgba(37, 99, 235, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .glow-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  }
+
+  /* ─── PREMIUM GRADIENT ─── */
+  .premium-gradient {
+    background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* ─── NAV ITEM ACTIVE ─── */
+  .nav-active {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* ─── BADGE / TAG ─── */
+  .badge-purple {
+    background: rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    color: #60a5fa;
+    border-radius: 8px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* ─── NOTIFICATION DOT ─── */
+  .notif-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--accent-3);
+    border-radius: 50%;
+    box-shadow:
+      0 0 10px var(--accent-3),
+      0 0 20px rgba(34, 197, 94, 0.4);
+  }
+
+  /* ─── DATA NUMBERS ─── */
+  .font-data {
+    font-family: "Fira Code", monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ANIMATIONS — All GPU (transform/opacity only)
+   ═══════════════════════════════════════════════════════════ */
+
+.animate-slide-up {
+  animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GRADIENT TEXT
+   ═══════════════════════════════════════════════════════════ */
+
+.gradient-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 50%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════ */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.3);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════ */
+
+.print-mode {
+  background-color: #f8fafc !important;
+  padding: 40px !important;
+  border-radius: 16px !important;
+  color: #0f172a !important;
+  font-family: "Tajawal", sans-serif !important;
+}
+
+.print-mode::before {
+  content: "شركة المستشار المؤسسي | النظام الإداري الشامل";
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e40af;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #3b82f6;
+}
+
+.print-mode .no-print {
+  display: none !important;
+}
+
+.print-mode .glass-panel {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.print-mode table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 10px;
+  background: white !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.print-mode th,
+.print-mode td {
+  padding: 14px 20px !important;
+  text-align: right !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  font-size: 14px !important;
+}
+
+.print-mode th {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
+  color: white !important;
+  font-weight: 800 !important;
+}
+
+.print-mode tr:nth-child(even) td {
+  background-color: #f8fafc !important;
+}
+.print-mode tr:nth-child(odd) td {
+  background-color: #ffffff !important;
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

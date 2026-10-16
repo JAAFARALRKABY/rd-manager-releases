@@ -1,0 +1,12 @@
+{
+  "appId": "com.rd.app",
+  "appName": "RD Manager",
+  "webDir": "dist",
+  "server": {
+    "cleartext": true,
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
