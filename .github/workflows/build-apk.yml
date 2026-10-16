@@ -56,8 +56,17 @@ jobs:
 
       - name: Build APK (Assemble Debug)
         run: |
+          set -o pipefail
           cd android
           ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee ../gradle-build.log
+
+      - name: Print Gradle Error Log If Failed
+        if: failure()
+        run: |
+          if [ -f gradle-build.log ]; then
+            echo "========== GRADLE BUILD FAILURE LOG =========="
+            tail -n 120 gradle-build.log
+          fi
 
       - name: Upload Build Log on Failure
         if: failure()
