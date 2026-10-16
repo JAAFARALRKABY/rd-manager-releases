@@ -38,16 +38,16 @@ jobs:
       - name: Build Web Application
         run: npm run build
 
-      - name: Sync Capacitor Android
-        run: npx cap sync android
-
       - name: Make Gradlew Executable
         run: chmod +x android/gradlew
+
+      - name: Sync Capacitor Android
+        run: npx cap sync android || npx cap copy android
 
       - name: Build APK (Assemble Debug)
         run: |
           cd android
-          ./gradlew assembleDebug --no-daemon
+          ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Rename APK for Distribution
         run: |
